@@ -45,7 +45,7 @@ public class BJ2920 {
         int[] numbers = new int[8];
 
         for (int i = 8; i > 0; i--) {
-            numbers[i - 1] = i;
+            numbers[8 - i] = i;
         }
 
         return numbers;
