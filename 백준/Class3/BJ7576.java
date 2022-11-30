@@ -39,8 +39,8 @@ public class BJ7576 {
                 String isRipped = st.nextToken();
                 box[i][j] = Integer.parseInt(isRipped);
 
-                if (isRipped.equals(String.valueOf(RIPPED))) { // 해당 토메이로가 익엇을 경우
-                    q.offer(new Tomato(i, j, 0)); // 필요 없으니 큐에서 제거
+                if (isRipped.equals(String.valueOf(RIPPED))) { // 해당 좌표의 토메이로가 익었을 경우
+                    q.offer(new Tomato(i, j, 0)); // 익은 토메이로 추가
                 }
             }
         }
@@ -49,8 +49,8 @@ public class BJ7576 {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (box[i][j] == NON_RIPPED) {
-                    day = -1;
+                if (box[i][j] == NON_RIPPED) { // 안 익은 토메이로가 있을 때
+                    day = -1; //
                 }
             }
         }
@@ -80,9 +80,9 @@ public class BJ7576 {
                 if (ptx >= 0 && ptx < n && pty >= 0 && pty < m) {
                     day = days;
 
-                    if (box[ptx][pty] == NON_RIPPED) {
-                        q.offer(new Tomato(ptx, pty, days));
-                        box[ptx][pty] = RIPPED;
+                    if (box[ptx][pty] == NON_RIPPED) { // 아직 익지 않은 토메이로가 있을 경우
+                        q.offer(new Tomato(ptx, pty, days)); // 다시 넣어!
+                        box[ptx][pty] = RIPPED; // 익게 만들어
                     }
                 }
             }
@@ -101,3 +101,4 @@ class Tomato {
         this.day = day;
     }
 }
+
